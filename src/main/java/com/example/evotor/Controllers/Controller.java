@@ -18,7 +18,7 @@ public class Controller {
     @PostMapping("/processReceipt")
     public void processReceipt(@RequestBody EvotorReceiptRequest evotorReceiptRequest) throws IOException, GeneralSecurityException {
         final Sheets sheetsService;
-        final String SPREADSHEET_ID = "theta-decker-357020";
+        final String SPREADSHEET_ID = "1OTrvLcvqIAMQsn5hNZd_UiFyCn1cn76QJ13NY268vz8";
         sheetsService = SheetsServiceUtil.getSheetsService();
         ValueRange body = new ValueRange()
                 .setValues(Arrays.asList(

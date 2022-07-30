@@ -28,7 +28,7 @@ public class GoogleAuthorizeUtil {
                 .setDataStoreFactory(new MemoryDataStoreFactory())
                 .setAccessType("offline")
                 .build();
-        Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("Evotor");
+        Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("User");
 
         return credential;
 
