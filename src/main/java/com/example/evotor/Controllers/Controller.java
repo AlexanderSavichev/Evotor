@@ -26,7 +26,33 @@ public class Controller {
                                 evotorReceiptRequest.timestamp,
                                 evotorReceiptRequest.userId,
                                 evotorReceiptRequest.type,
-                                evotorReceiptRequest.version )
+                                evotorReceiptRequest.version,
+                                evotorReceiptRequest.data.id,
+                                evotorReceiptRequest.data.deviceId,
+                                evotorReceiptRequest.data.storeId,
+                                evotorReceiptRequest.data.dateTime,
+                                evotorReceiptRequest.data.type,
+                                evotorReceiptRequest.data.shiftId,
+                                evotorReceiptRequest.data.employeeId,
+                                evotorReceiptRequest.data.paymentSource,
+                                evotorReceiptRequest.data.infoCheck,
+                                evotorReceiptRequest.data.egais,
+                                evotorReceiptRequest.data.items.id,
+                                evotorReceiptRequest.data.items.name,
+                                evotorReceiptRequest.data.items.itemType,
+                                evotorReceiptRequest.data.items.measureName,
+                                evotorReceiptRequest.data.items.quantity,
+                                evotorReceiptRequest.data.items.price,
+                                evotorReceiptRequest.data.items.costPrice,
+                                evotorReceiptRequest.data.items.sumPrice,
+                                evotorReceiptRequest.data.items.tax,
+                                evotorReceiptRequest.data.items.taxPercent,
+                                evotorReceiptRequest.data.items.discount,
+                                evotorReceiptRequest.data.totalTax,
+                                evotorReceiptRequest.data.totalDiscount,
+                                evotorReceiptRequest.data.totalAmount,
+                                evotorReceiptRequest.data.extras
+                                )
                 ));
        AppendValuesResponse result = sheetsService.spreadsheets().values()
                .append(SPREADSHEET_ID, "A1", body)
