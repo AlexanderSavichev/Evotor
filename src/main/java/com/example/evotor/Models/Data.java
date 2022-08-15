@@ -1,5 +1,7 @@
 package com.example.evotor.Models;
 
+import java.util.List;
+
 public class Data {
     public String id;
     public String deviceId;
@@ -11,9 +13,9 @@ public class Data {
     public String paymentSource;
     public Boolean infoCheck;
     public Boolean egais;
-    public Items items;
+    public List<Items> items;
     public Double totalTax;
     public Double totalDiscount;
     public Double totalAmount;
-    public String extras;
+    public Extras extras;
 }
