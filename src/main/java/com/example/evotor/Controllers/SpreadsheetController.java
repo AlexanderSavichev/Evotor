@@ -4,12 +4,6 @@ import com.example.evotor.Service.IdKeeperService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.thymeleaf.TemplateEngine;
-
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 @Controller
 public class SpreadsheetController {
@@ -34,13 +28,5 @@ public class SpreadsheetController {
         }
 
     }
-   // @RequestMapping("/evotor")
-   // public String CurrentId (Model model, HttpServletRequest request){
-     //   IdKeeperService idKeeperService = new IdKeeperService();
-    //    String spreadsheetId = idKeeperService.getSpreadsheetId();
-    //    model.addAttribute("CurrentId",spreadsheetId );
-    //    System.out.println(spreadsheetId);
-   //     return "/evotor";
-   // }
 
 }
