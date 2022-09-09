@@ -1,24 +1,22 @@
 package com.example.evotor.Controllers;
 import com.example.evotor.Models.EvotorReceiptRequest;
 import com.example.evotor.Models.Items;
+import com.example.evotor.Service.IdKeeperService;
 import com.example.evotor.Service.SheetsServiceUtil;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.ValueRange;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.*;
 import com.google.api.services.sheets.v4.model.AppendValuesResponse;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.*;
 
 @RestController
-@Component
+@SpringBootApplication
 public class Controller {
-    @Value("${spreadsheet_id}")
-    String spreadsheetId;
+    IdKeeperService idKeeperService = new IdKeeperService();
+    String spreadsheetId = idKeeperService.getSpreadsheetId();
     @PostMapping("/processReceipt")
     public void processReceipt(@RequestBody EvotorReceiptRequest evotorReceiptRequest) throws IOException, GeneralSecurityException {
         final Sheets sheetsService;

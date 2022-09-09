@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Evotor</title>
+</head>
+<body>
+<form action="/param" method="GET" id="nameId">
+    <div>
+        <label for="IdField">Input URL of the Sheet</label>
+        <input name="SpreadsheetId" id="IdField">
+        <button>Submit</button>
+    </div>
+    <p><!--/*@thymesVar id="CurrentId" type=""*/-->
+    Current Id is: <span th:text="${CurrentId}" /></p>
+    <p><!--/*@thymesVar id="ErrorId" type=""*/-->
+    <span th:text="${ErrorId}" /></p>
+</form>
+</body>
+</html>
