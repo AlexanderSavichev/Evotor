@@ -5,6 +5,7 @@ import com.example.evotor.Service.IdKeeperService;
 import com.example.evotor.Service.SheetsServiceUtil;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.ValueRange;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 import com.google.api.services.sheets.v4.model.AppendValuesResponse;
@@ -15,8 +16,9 @@ import java.util.*;
 @RestController
 @SpringBootApplication
 public class Controller {
-    IdKeeperService idKeeperService = new IdKeeperService();
-    String spreadsheetId = idKeeperService.getSpreadsheetId();
+    @Autowired
+    IdKeeperService idKeeperService;
+
     @PostMapping("/processReceipt")
     public void processReceipt(@RequestBody EvotorReceiptRequest evotorReceiptRequest) throws IOException, GeneralSecurityException {
         final Sheets sheetsService;
@@ -59,7 +61,7 @@ public class Controller {
                         (newItems)
                 ));
        AppendValuesResponse result = sheetsService.spreadsheets().values()
-               .append(spreadsheetId, "A1", body)
+               .append(idKeeperService.getSpreadsheetId(), "A1", body)
                .setValueInputOption("USER_ENTERED")
                .setInsertDataOption("INSERT_ROWS")
                .setIncludeValuesInResponse(true)

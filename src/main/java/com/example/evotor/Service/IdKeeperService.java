@@ -1,15 +1,23 @@
 package com.example.evotor.Service;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.PostConstruct;
 import java.io.*;
+import java.util.Objects;
 import java.util.Properties;
 
 
+@Service
 public class IdKeeperService {
-   public String SpreadsheetId;
+
+   private String SpreadsheetId;
+
    public String getSpreadsheetId(){
-       LoadSpreadsheetId();
        return SpreadsheetId;
    }
-   public void LoadSpreadsheetId(){
+
+   @PostConstruct
+   public void loadFromFile(){
        try (InputStream input = new FileInputStream("src/main/resources/config.properties")) {
            Properties prop = new Properties();
            prop.load(input);
@@ -22,11 +30,10 @@ public class IdKeeperService {
    }
 
     public String SetSpreadsheetId (String newSpread) {
-        LoadSpreadsheetId();
-        if (SpreadsheetId != newSpread && newSpread != null) {
+        if (!Objects.equals(SpreadsheetId, newSpread) && newSpread != null) {
             SpreadsheetId = newSpread;
             try (
-                    OutputStream output = new FileOutputStream("src/main/resources/config.properties")) {
+                OutputStream output = new FileOutputStream("src/main/resources/config.properties")) {
                 Properties prop = new Properties();
                 prop.setProperty("SpreadsheetId", newSpread);
                 prop.store(output, null);
