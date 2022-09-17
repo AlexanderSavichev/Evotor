@@ -12,6 +12,7 @@ public class IdKeeperService {
 
    private String SpreadsheetId;
 
+
    public String getSpreadsheetId(){
        return SpreadsheetId;
    }
@@ -42,7 +43,6 @@ public class IdKeeperService {
                 e.printStackTrace();
             }
         }
-        System.out.println(SpreadsheetId);
         return SpreadsheetId;
     }
 }

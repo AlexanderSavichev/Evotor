@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Evotor</title>
@@ -7,14 +7,16 @@
 <body>
 <form action="/param" method="GET" id="nameId">
     <div>
+        <p>Введите адрес таблицы Google из браузера и нажмите кнопку авторизации</p>
         <label for="IdField">Input URL of the Sheet</label>
         <input name="SpreadsheetId" id="IdField">
-        <button>Submit</button>
+        <button>Авторизация</button>
     </div>
     <p><!--/*@thymesVar id="CurrentId" type=""*/-->
-    Current Id is: <span th:text="${CurrentId}" /></p>
+    Current Id is: <span th:utext="${CurrentId}" /></p>
     <p><!--/*@thymesVar id="ErrorId" type=""*/-->
-    <span th:text="${ErrorId}" /></p>
+    <span th:utext="${ErrorId}" /></p>
 </form>
+
 </body>
 </html>

@@ -20,7 +20,7 @@ public class Controller {
     IdKeeperService idKeeperService;
 
     @PostMapping("/processReceipt")
-    public void processReceipt(@RequestBody EvotorReceiptRequest evotorReceiptRequest) throws IOException, GeneralSecurityException {
+    public String processReceipt(@RequestBody EvotorReceiptRequest evotorReceiptRequest) throws IOException, GeneralSecurityException {
         final Sheets sheetsService;
         sheetsService = SheetsServiceUtil.getSheetsService();
         List<Object> newItems = new LinkedList<>();
@@ -66,8 +66,10 @@ public class Controller {
                .setInsertDataOption("INSERT_ROWS")
                .setIncludeValuesInResponse(true)
                .execute();
+
         ValueRange total = result.getUpdates().getUpdatedData();
         assert(total.getValues().get(0).get(1)).equals("65");
+        return "/evotor";
 
     }
 }
