@@ -22,7 +22,6 @@ public class IdKeeperService {
        byte[] bdata = FileCopyUtils.copyToByteArray(cpr.getInputStream());
        data = new String(bdata, StandardCharsets.UTF_8);
        SpreadsheetId = data.substring(data.indexOf("Id=")+3);
-       System.out.println(SpreadsheetId);
    }
 
     public String SetSpreadsheetId (String newSpread) {
