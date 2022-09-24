@@ -17,14 +17,14 @@ public class SpreadsheetController {
     @Autowired
     GoogleAuthorizeUtil googleAuthorizeUtil;
 
-    @RequestMapping(value ="/evotor", method = RequestMethod.GET)
+    @RequestMapping(value ="evotor", method = RequestMethod.GET)
     public String CurrentId (Model model){
         String spreadsheetId = idKeeperService.getSpreadsheetId();
         model.addAttribute("CurrentId",spreadsheetId );
-        return "/evotor";
+        return "evotor";
     }
 
-    @GetMapping("/param")
+    @GetMapping("param")
     public String GetSpreadsheetId (@RequestParam(value = "SpreadsheetId") String SpreadsheetURL, Model model) throws IOException, GeneralSecurityException {
         googleAuthorizeUtil.authorize();
         try{
@@ -33,7 +33,7 @@ public class SpreadsheetController {
             model.addAttribute("CurrentId",SpreadsheetId );
             idKeeperService.SetSpreadsheetId(SpreadsheetId);
 
-        return "/evotor";}
+        return "evotor";}
         catch (StringIndexOutOfBoundsException e){
             String SpreadsheetId = null;
             idKeeperService.SetSpreadsheetId(SpreadsheetId);
@@ -41,7 +41,7 @@ public class SpreadsheetController {
             //model.addAttribute("CurrentUri",googleAuthorizeUtil.getRedirectUri());
             String oldId = idKeeperService.getSpreadsheetId();
             model.addAttribute("CurrentId",oldId );
-            return "/evotor";
+            return "evotor";
         }
 
     }

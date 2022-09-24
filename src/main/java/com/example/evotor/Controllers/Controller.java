@@ -69,7 +69,7 @@ public class Controller {
 
         ValueRange total = result.getUpdates().getUpdatedData();
         assert(total.getValues().get(0).get(1)).equals("65");
-        return "/evotor";
+        return "evotor";
 
     }
 }

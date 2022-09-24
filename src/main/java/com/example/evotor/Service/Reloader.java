@@ -9,7 +9,7 @@ public class Reloader extends Application {
     public String browser(String url) {
 
         getHostServices().showDocument(url);
-        return "/evotor";
+        return "evotor";
     }
 
     @Override

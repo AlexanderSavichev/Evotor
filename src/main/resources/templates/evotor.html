@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
     <title>Evotor</title>
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
 <body>
-<form action="/param" method="GET" id="nameId">
-    <div>
-        <p>Введите адрес таблицы Google из браузера и нажмите кнопку авторизации</p>
-        <label for="IdField">Input URL of the Sheet</label>
-        <input name="SpreadsheetId" id="IdField">
-        <button>Авторизация</button>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/evotor">Программа для пересыла чеков Evotor</a>
     </div>
-    <p><!--/*@thymesVar id="CurrentId" type=""*/-->
-    Current Id is: <span th:utext="${CurrentId}" /></p>
+</nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mt-5">
+<form action="param" method="GET" id="nameId">
+    <div>
+         <h6><p>Введите адрес таблицы Google из браузера и нажмите кнопку авторизации</p></h6>
+        <label for="IdField"><h6>Введите URL вашей Google таблицы</h6></label>
+        <input name="SpreadsheetId" id="IdField">
+        <button class="btn btn-primary" type="submit">Авторизоваться</button>
+    </div>
+    <p>
+    <h6>Текущий Id:</h6><!--/*@thymesVar id="CurrentId" type=""*/--> <span th:utext="${CurrentId}" /></p>
     <p><!--/*@thymesVar id="ErrorId" type=""*/-->
     <span th:utext="${ErrorId}" /></p>
 </form>
-
+            </div>
+        </div>
+    </div>
 </body>
 </html>
