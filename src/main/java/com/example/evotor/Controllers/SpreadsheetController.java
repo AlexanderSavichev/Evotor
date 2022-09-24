@@ -18,7 +18,7 @@ public class SpreadsheetController {
     GoogleAuthorizeUtil googleAuthorizeUtil;
 
     @RequestMapping(value ="evotor", method = RequestMethod.GET)
-    public String CurrentId (Model model){
+    public String CurrentId (Model model) throws IOException {
         String spreadsheetId = idKeeperService.getSpreadsheetId();
         model.addAttribute("CurrentId",spreadsheetId );
         return "evotor";
@@ -29,7 +29,6 @@ public class SpreadsheetController {
         googleAuthorizeUtil.authorize();
         try{
             String SpreadsheetId = SpreadsheetURL.substring(SpreadsheetURL.indexOf("/d/") + 3, SpreadsheetURL.indexOf("/edit"));
-            //model.addAttribute("CurrentUri",googleAuthorizeUtil.getRedirectUri());
             model.addAttribute("CurrentId",SpreadsheetId );
             idKeeperService.SetSpreadsheetId(SpreadsheetId);
 
@@ -38,7 +37,6 @@ public class SpreadsheetController {
             String SpreadsheetId = null;
             idKeeperService.SetSpreadsheetId(SpreadsheetId);
             model.addAttribute("ErrorId","Введен неверный SpreadsheetId" );
-            //model.addAttribute("CurrentUri",googleAuthorizeUtil.getRedirectUri());
             String oldId = idKeeperService.getSpreadsheetId();
             model.addAttribute("CurrentId",oldId );
             return "evotor";

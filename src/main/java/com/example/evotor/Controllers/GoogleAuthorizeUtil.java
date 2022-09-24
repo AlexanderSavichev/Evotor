@@ -25,7 +25,7 @@ public class GoogleAuthorizeUtil {
 
     public static Credential authorize() throws IOException, GeneralSecurityException {
 
-        InputStream in = GoogleAuthorizeUtil.class.getResourceAsStream("/google-sheets-client-secret.json");
+        InputStream in = GoogleAuthorizeUtil.class.getResourceAsStream("google-sheets-client-secret.json");
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(GsonFactory.getDefaultInstance(), new InputStreamReader(in));
         List<String> scopes = Arrays.asList(SheetsScopes.SPREADSHEETS);
 
